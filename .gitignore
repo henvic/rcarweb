@@ -1,0 +1,18 @@
+# based on https://github.com/github/gitignore
+node_modules
+pids
+npm-debug.log
+cache.properties
+.settings
+.project
+.buildpath
+# Mac
+.DS_Store
+.Spotlight-V100
+.Trashes
+# KDE
+.directory
+# Vim
+.*.sw[a-z]
+*.un~
+Session.vim
