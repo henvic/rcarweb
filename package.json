@@ -9,7 +9,7 @@
     "express": "3.0.0alpha1",
     "jade": "*",
     "duino": "0.0.5",
-    "socket.io": "0.9.5"
+    "socket.io": "0.9.5",
     "less-middleware": "*"
   }
 }
