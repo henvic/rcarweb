@@ -20,7 +20,7 @@ And then:
 
 ```
 cd rcarweb
-npm install
+./bin/install
 ```
 
 ### This should install the following packages:

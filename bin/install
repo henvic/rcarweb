@@ -1,0 +1,30 @@
+#!/bin/sh
+
+install() {
+  if [ -d public/vendor ]
+    then
+      echo "public/vendor directory already exists. Remove it before continuing."
+      exit
+  fi
+
+  mkdir public/vendor && echo "public/vendor created."
+
+  cd public/vendor
+
+  curl -O http://twitter.github.com/bootstrap/assets/bootstrap.zip &&
+  unzip bootstrap.zip &&
+  echo "Twitter Bootstrap successfully installed"
+
+  curl -O http://code.jquery.com/jquery-1.7.2.min.js &&
+  echo "jQuery successfully installed"
+
+  cd ../..
+
+  npm install && echo "install finished."
+}
+
+# make sure the script runs on the proper working directory
+DIRECTORY=`dirname $0`/..
+cd $DIRECTORY
+
+install
