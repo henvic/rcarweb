@@ -1,4 +1,5 @@
 # based on https://github.com/github/gitignore
+public/vendor
 node_modules
 pids
 npm-debug.log
