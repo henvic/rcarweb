@@ -23,11 +23,19 @@ cd rcarweb
 ./bin/install
 ```
 
-### This should install the following packages:
+### This should install the following
+
+#### npm packages
 * [duino](https://github.com/ecto/duino)
 * [express](http://expressjs.com/)
 * [jade](http://jade-lang.com/)
 * [socket.io](http://socket.io/)
+* [less-middleware](https://github.com/emberfeather/less.js-middleware)
+
+#### client-side libraries
+* [jQuery](http://jquery.com/)
+* [Twitter Bootstrap](http://twitter.github.com/bootstrap/)
+
 
 ## Run
 With the Arduino connected to your computer run:
