@@ -12,7 +12,7 @@ install() {
   cd public/vendor
 
   curl -O http://twitter.github.com/bootstrap/assets/bootstrap.zip &&
-  unzip bootstrap.zip &&
+  unzip bootstrap.zip && rm bootstrap.zip &&
   echo "Twitter Bootstrap successfully installed"
 
   curl -O http://code.jquery.com/jquery-1.7.2.min.js &&
