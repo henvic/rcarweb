@@ -1,5 +1,25 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+    .container
+        .welcome
+          h1 Hello, #{title} driver!
+          code git clone git@github.com:henvic/rcarweb.git
+          p
+            a.btn.btn-primary.btn-large Drive 
+             i.icon-road.icon-white
+        .row
+          .span4
+            h2 About
+            p Control a RC car with Arduino, WebSocket, and node.js. Code's 
+             a(href="https://github.com/henvic/rcarweb") available on a GitHub repo
+             .
+        hr
+        footer
+          p
+           .alert.alert-info
+            i.icon-shopping-cart
+            | no free lunch here, if you need a Arduino or a RC car, 
+            a(href="http://www.amazon.com/", target="_blank") go shopping
+            .
+            a(href="#", class="close", data-dismiss="alert") &times;

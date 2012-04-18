@@ -1,7 +1,40 @@
-!!!
-html
+!!! 5
+html(lang="en")
   head
+    meta(charset="utf-8")
     title= title
-    link(rel='stylesheet', href='/stylesheets/style.css')
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    meta(name="description", content="Control a RC car over the web with node.js, Arduino and WebSockets.")
+    meta(name="author", content="Henrique Vicente")
+    link(rel="stylesheet", href="/vendor/bootstrap/css/bootstrap.min.css")
+    link(rel="stylesheet", href="/stylesheets/style.css")
+    link(rel="stylesheet", href="/vendor/bootstrap/css/bootstrap-responsive.min.css")
+    //if lt IE 9
+    script(src="http://html5shim.googlecode.com/svn/trunk/html5.js")
+    link(rel="shortcut icon", href="/favicon.ico")
+    link(rel="apple-touch-icon-precomposed", sizes="114x114", href="../assets/ico/apple-touch-icon-114-precomposed.png")
+    link(rel="apple-touch-icon-precomposed", sizes="72x72", href="../assets/ico/apple-touch-icon-72-precomposed.png")
+    link(rel="apple-touch-icon-precomposed", href="../assets/ico/apple-touch-icon-57-precomposed.png")
   body
-    block content
+    .navbar.navbar-fixed-top
+      .navbar-inner
+        .container
+          a.btn.btn-navbar(data-toggle="collapse", data-target=".nav-collapse")
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          a.brand(href="#")= title
+          .nav-collapse
+            ul.nav
+              li.active
+                a(href="#") Home
+              li
+                a(href="#about") About
+              li
+                a(href="#contact") Contact
+
+  block content
+  a.github-ribbon.visible-desktop(href="https://github.com/henvic/rcarweb")
+    img(src="https://a248.e.akamai.net/assets.github.com/img/4c7dc970b89fd04b81c8e221ba88ff99a06c6b61/687474703a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f77686974655f6666666666662e706e67", alt="Fork me on GitHub")
+  script(src="/vendor/jquery-1.7.2.min.js")
+  script(src="/vendor/bootstrap/js/bootstrap.min.js")
