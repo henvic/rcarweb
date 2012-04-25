@@ -78,5 +78,34 @@ io.set('authorization', function (data, accept) {
     });
 });
 
+var metaArduino = io
+    .of('/meta/arduino')
+    .on('message', function (msg) {
+        console.log(msg);
+    });
+
+var arduinoStatus = 'unavailable',
+    board = new arduino.Board({debug: true});
+
+exports.board = board;
+exports.arduinoStatus = arduinoStatus;
+
+board.on('error', function (error) {
+    console.error(error);
+    arduinoStatus = 'error';
+    exports.arduinoStatus = arduinoStatus;
+});
+
+board.on('ready', function () {
+    console.log('Arduino is ready');
+    arduinoStatus = 'ready';
+    exports.arduinoStatus = arduinoStatus;
+});
+
+board.on('connected', function () {
+    console.log('Arduino is connected');
+    arduinoStatus = 'connected';
+    exports.arduinoStatus = arduinoStatus;
+});
 
 app.listen(config.port);
