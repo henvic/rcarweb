@@ -1,3 +1,5 @@
+"use strict";
+
 var config = {};
 
 config.port = 8080;
