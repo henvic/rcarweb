@@ -2,10 +2,14 @@
 /**
  * Module dependencies.
  */
+var sio = require('socket.io'),
+    express = require('express'),
+    routes = require('./routes'),
+    util = require('util'),
+    connect = require('express/node_modules/connect'),
+    arduino = require('duino'),
+    config = require('./config');
 
-var express = require('express')
-  , routes = require('./routes')
-  , http = require('http');
 
 var app = express();
 
