@@ -110,4 +110,20 @@ board.on('connected', function () {
     exports.arduinoStatus = arduinoStatus;
 });
 
+//set Arduino metainfo channel
+io.of('/meta/arduino').on('connection', function (socket) {
+    socket.on('message', function (msg) {
+        if (msg === 'blink led') {
+            console.log('blink LED');
+            board.digitalWrite(config.ledPin, board.HIGH);
+            setTimeout(function () {
+                board.digitalWrite(config.ledPin, board.LOW);
+            }, 700);
+            setTimeout(function () {
+                board.digitalWrite(config.ledPin, board.HIGH);
+            }, 1500);
+        }
+    });
+});
+
 app.listen(config.port);
