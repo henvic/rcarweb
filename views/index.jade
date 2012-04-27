@@ -3,23 +3,61 @@ extends layout
 block content
     .container
         .welcome
-          h1 Hello, #{title} driver!
-          code git clone git@github.com:henvic/rcarweb.git
-          p
-            a.btn.btn-primary.btn-large Drive 
-             i.icon-road.icon-white
+          h1 Hello, driver!
+        p Take a ride in a RC car with Arduino, WebSockets and node.js.
+        p(id="arrow") arrow:
         .row
-          .span4
-            h2 About
-            p Control a RC car with Arduino, WebSocket, and node.js. Code's 
-             a(href="https://github.com/henvic/rcarweb") available on a GitHub repo
-             .
+          .span8
+            div(id="main-alert-zone") 
+        .row
+          .span12
+            canvas.space
+            img.video-stream(id="video-stream", src="http://placehold.it/640x360", width="640", height="360")
+        .row
+          .span12
+            .progress.progress-danger.progress-striped.progress-size-limit(id="progress")
+              .bar
+        .row
+          .span12
+            button.btn.btn-success.btn-large(id="rc-btn-start")
+             i.icon-off.icon-white
+             |  start
+            | 
+            button.btn.btn-warning.btn-large(id="pin13-debug-btn", title="Check the health of your Arduino", data-content="On your Arduino board find the 13-pin digital output. It almost certainly has a soldered LED on it. When you press this button a SOS distress signal should flash once.")
+             i.icon-flag.icon-white
+             |  debug  
+            | 
+            button.btn.btn-danger.btn-large(id="rc-btn-park")
+             i.icon-stop.icon-white
+             |  park
+            |  
+            button.btn.btn-default.btn-large.rc-btn-cam(id="rc-btn-cam")
+             i.icon-facetime-video
+             |  turn on the cam
+            |  
+            i.icon-remove-sign(id="websocket-connection-status")
+            span(id="socket-type") WebSockets
+            |  
+            - if (arduinoStatus == 'ready')
+             i.icon-ok-sign
+            - else if (arduinoStatus == 'connected')
+             i.icon-minus-sign
+            - else
+             i.icon-remove-sign
+            | Arduino
+            |  
+            span.label.label-success.transceiver-indicator(id="tx-indicator") tx
+            | 
+            span.label.label-important.transceiver-indicator(id="rx-indicator") rx
         hr
         footer
           p
            .alert.alert-info
             i.icon-shopping-cart
-            | no free lunch here, if you need a Arduino or a RC car, 
+            |  no free robots here, if you need a Arduino or a RC car, 
             a(href="http://www.amazon.com/", target="_blank") go shopping
-            .
+            |  or take a free ride while you can.
             a(href="#", class="close", data-dismiss="alert") &times;
+          code
+           i.icon-road
+           |  git clone git@github.com:henvic/rcarweb.git
