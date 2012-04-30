@@ -2,14 +2,22 @@
   "name": "rcarweb",
   "version": "0.0.1",
   "private": true,
+  "engines": ["node >= 0.6.15"],
+  "main": "server.js",
   "scripts": {
-    "start": "node app"
   },
   "dependencies": {
     "express": "2.5.9",
+    "railway": ">= 0.2.6",
+    "jugglingdb": ">= 0.1.0",
     "jade": "*",
     "duino": ">= 0.0.6",
     "socket.io": "0.9.5",
     "less-middleware": "*"
+  },
+  "devDependencies": {
+    "qunit": "*",
+    "sinon": "*",
+    "semicov" : "*"
   }
 }
