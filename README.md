@@ -14,7 +14,7 @@ A simple RC car which its remote control connected to a Arduino which will send 
 After, on your CLI (command-line interface) clone the project:
 
 ```
-git clone ...
+git clone git://github.com/henvic/rcarweb.git
 ```
 
 
