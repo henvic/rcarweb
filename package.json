@@ -25,6 +25,7 @@
   "engines": ["node >= 0.6.15"],
   "main": "server.js",
   "scripts": {
+    "test": "grunt test"
   },
   "dependencies": {
     "express": "2.5.9",
@@ -38,6 +39,7 @@
   "devDependencies": {
     "qunit": "*",
     "sinon": "*",
-    "semicov" : "*"
+    "semicov" : "*",
+    "grunt": "~0.3.9"
   }
 }
