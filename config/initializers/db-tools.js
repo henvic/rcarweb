@@ -1,21 +1,6 @@
-railway.tools.database = function db() {
-    var action = process.argv[3];
-    switch (action) {
-        case 'migrate': 
-        case 'update': 
-        perform(action, process.exit);
-        break;
-        default:
-        console.log('Unknown action', action);
-        break;
-    }
-};
+"use strict";
 
-railway.tools.database.help = {
-    shortcut:    'db',
-    usage:       'db [migrate|update]',
-    description: 'Migrate or update database(s)'
-};
+/*global railway, app */
 
 function getUniqueSchemas() {
     var schemas = [];
@@ -42,10 +27,34 @@ function perform(action, callback) {
         }
     });
 
-    if (wait === 0) done(); else console.log(wait);
-
     function done() {
-        if (--wait === 0) callback();
+        if (--wait === 0) {
+            callback();
+        }
+    }
+
+    if (wait === 0) {
+        done();
+    } else {
+        console.log(wait);
     }
 }
 
+railway.tools.database = function db() {
+    var action = process.argv[3];
+    switch (action) {
+        case 'migrate': 
+        case 'update': 
+        perform(action, process.exit);
+        break;
+        default:
+        console.log('Unknown action', action);
+        break;
+    }
+};
+
+railway.tools.database.help = {
+    shortcut:    'db',
+    usage:       'db [migrate|update]',
+    description: 'Migrate or update database(s)'
+};
