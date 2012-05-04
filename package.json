@@ -25,7 +25,7 @@
   "engines": ["node >= 0.6.15"],
   "main": "server.js",
   "scripts": {
-    "test": "grunt test"
+    "test": "grunt test; recess public/stylesheets/*.less"
   },
   "dependencies": {
     "express": "2.5.9",
