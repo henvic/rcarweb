@@ -8,6 +8,8 @@ This is a hobby project yet in its first steps. It is not functional yet.
 
 A simple RC car which its remote control connected to a Arduino which will send instructions received from a web browser.
 
+![rcarweb](https://github.com/henvic/rcarweb/blob/master/public/images/rcarweb-128px.png?raw=true)
+
 ## Install
 [node.js](http://nodejs.org/) is the platform. If you don't have, install it first.
 
