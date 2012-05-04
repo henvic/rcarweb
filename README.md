@@ -22,7 +22,8 @@ And then:
 
 ```
 cd rcarweb
-./bin/install
+npm install
+npm test
 ```
 
 ### This should install at least the following

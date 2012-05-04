@@ -1,4 +1,5 @@
 #!/bin/sh
+#this installs additional dependencies not available not available on npm
 
 install() {
   if [ -d public/vendor ]
@@ -20,7 +21,7 @@ install() {
 
   cd ../..
 
-  npm install && echo "install finished."
+  echo "install finished."
 }
 
 # make sure the script runs on the proper working directory

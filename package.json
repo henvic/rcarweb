@@ -25,6 +25,7 @@
   "engines": ["node >= 0.6.15"],
   "main": "server.js",
   "scripts": {
+    "install": "bin/install",
     "test": "grunt test; recess public/stylesheets/*.less"
   },
   "dependencies": {
