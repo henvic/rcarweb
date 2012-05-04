@@ -53,6 +53,18 @@ Feel free to push code to this repository. Anything you want, go to the [issue t
 
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [grunt](https://github.com/cowboy/grunt) and [recess](https://github.com/twitter/recess).
 
+To run recess you will need to use:
+
+```
+recess public/stylesheets/*.less
+```
+
+Grunt has a great watch option which watches for file changes, use it with:
+
+```
+grunt watch
+```
+
 ## License
 This software is provided "as is", without warranty.
 The [New BSD License](http://en.wikipedia.org/wiki/New_BSD_license) and the [MIT License](http://en.wikipedia.org/wiki/MIT_License) are the licenses (case you need something legal).
