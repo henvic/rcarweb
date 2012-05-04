@@ -34,13 +34,14 @@
     "jugglingdb": ">= 0.1.0",
     "jade": "*",
     "duino": ">= 0.0.6",
-    "socket.io": "0.9.5",
+    "socket.io": ">= 0.9.6",
     "less-middleware": "*"
   },
   "devDependencies": {
     "qunit": "*",
     "sinon": "*",
     "semicov" : "*",
-    "grunt": "~0.3.9"
+    "grunt": "~0.3.9",
+    "recess": ">= 1.0.4"
   }
 }
