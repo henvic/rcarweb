@@ -4,8 +4,8 @@
 install() {
   if [ -d public/vendor ]
     then
-      echo "public/vendor directory already exists. Remove it before continuing."
-      exit 1
+      echo "public/vendor directory already exists. Removing it."
+      rm -r public/vendor
   fi
 
   mkdir public/vendor && echo "public/vendor created."
@@ -18,6 +18,8 @@ install() {
 
   curl -O http://code.jquery.com/jquery-1.7.2.min.js &&
   echo "jQuery successfully installed"
+
+  echo "Don't install anything directly here. It will be erased with any npm install. Use bin/install for the job instead." >> IMPORTANT.md
 
   cd ../..
 
