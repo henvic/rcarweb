@@ -48,6 +48,18 @@ block content
             span.label.label-success.transceiver-indicator(id="tx-indicator") tx
             | 
             span.label.label-important.transceiver-indicator(id="rx-indicator") rx
+        .row
+          .span8
+            form.form-inline
+             .page-header
+             h1(id="console") Tiny JavaScript Console
+             p Never used JavaScript before? It's fun. Check out the 
+              a(href="http://josscrowcroft.github.com/javascript-sandbox-console/") js sandbox console
+              |  or (even better) your browser's development console.
+             input.input-large(id="console-textarea", type="text", placeholder="Type any JavaScript here")
+             | 
+             button.btn.btn-primary(id="console-submit") Run
+             span.help-inline(id="console-return")
         hr
         footer
           p

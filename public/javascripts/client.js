@@ -5,6 +5,19 @@
         var socket = io.connect(''),
             metaArduino = io.connect('/meta/arduino');
 
+        $('#console-submit').click(function (e) {
+            var consoleTextarea = $('#console-textarea');
+            var consoleReturn = $('#console-return');
+            var returnHistory = [];
+            var cmd = consoleTextarea.val();
+
+            e.preventDefault();
+
+            var returnValue = eval(cmd);
+
+            consoleReturn.html('<i class="icon-arrow-right"></i> ' + returnValue);
+        });
+
         $('[data-spy="scroll"]').each(function () {
             var $spy = $(this).scrollspy('refresh');
         });
