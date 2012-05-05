@@ -64,7 +64,4 @@ io.set('authorization', function (data, accept) {
             sess.touch().save();
         });
     });
-
-    console.log("Requiring the socket model");
-    //var socketModel = require('../app/models/socket');
 });
