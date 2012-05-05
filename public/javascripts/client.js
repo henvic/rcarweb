@@ -5,6 +5,10 @@
         var socket = io.connect(''),
             metaArduino = io.connect('/meta/arduino');
 
+        $('[data-spy="scroll"]').each(function () {
+            var $spy = $(this).scrollspy('refresh');
+        });
+
         $("#rc-btn-cam").toggle(
             function () {
                 var btn = $(this);
