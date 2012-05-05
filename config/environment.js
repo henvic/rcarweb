@@ -22,8 +22,8 @@ exports.io = io;
 app.configure(function () {
     var cwd = process.cwd();
     app.set('views', cwd + '/app/views');
-    app.set('view engine', 'jade');
-    app.set('view options', {layout: false});
+    app.set('view engine', 'ejs');
+    app.set('view options', {complexNames: true});
     app.use(express.cookieParser());
     app.use(require('less-middleware')({ src: cwd + '/public' }));
     app.use(express.static(cwd + '/public', {maxAge: 300}));

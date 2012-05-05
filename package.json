@@ -32,7 +32,8 @@
     "express": "2.5.9",
     "railway": ">= 0.2.6",
     "jugglingdb": ">= 0.1.0",
-    "jade": "*",
+    "ejs": "*",
+    "ejs-ext": "*",
     "duino": ">= 0.0.6",
     "socket.io": ">= 0.9.6",
     "less-middleware": "*"

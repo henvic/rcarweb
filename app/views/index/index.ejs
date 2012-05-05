@@ -1,0 +1,77 @@
+<div class="container">
+  <div class="page-header">
+    <h1>RC car</h1>
+    <p>Take a ride in a RC car with Arduino, WebSockets and node.js.</p>
+  </div>
+  <div class="row">
+    <div class="span8">
+      <div id="main-alert-zone"></div>
+    </div>
+  </div>
+  <div class= "row">
+    <div class="span12">
+      <canvas class="space"></canvas>
+      <img class="video-stream" id="video-stream" src="http://placehold.it/640x360" width="640" height="360" alt="video stream" />
+    </div>
+  </div>
+  <div class="row">
+    <div class="span12">
+      <div class="progress progress-danger progress-striped progress-size-limit" id="progress">
+        <div class="bar"></div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="span12">
+      <button class="btn btn-success btn-large" id="rc-btn-start">
+        <i class="icon-off icon-white"></i> start
+     </button>
+     <button class="btn btn-warning btn-large" id="pin13-debug-btn" title="Check the health of your Arduino" data-content="On your Arduino board find the 13-pin digital output. It almost certainly has a soldered LED on it. When you press this button a SOS distress signal should flash once.">
+        <i class="icon-flag icon-white"></i> debug
+      </button>
+      <button class="btn btn-danger btn-large" id="rc-btn-park">
+        <i class="icon-stop icon-white"></i> park
+      </button>
+      <button class="btn btn-default btn-large rc-btn-cam" id="rc-btn-cam">
+        <i class="icon-facetime-video"></i> turn on the cam
+      </button>
+      <i class="icon-remove-sign" id="websocket-connection-status"></i>
+      <span id="socket-type">WebSockets</span>
+      <% if (arduinoStatus == 'ready') { %>
+      <i class="icon-ok-sign"></i>
+      <% } else if (arduinoStatus == 'connected') { %>
+      <i class="icon-minus-sign"></i>
+      <% } else { %>
+      <i class="icon-remove-sign"></i>
+      <% } %>
+      Arduino
+      <span class="label label-success transceiver-indicator" id="tx-indicator">tx</span>
+      <span class="label label-important transceiver-indicator" id="rx-indicator">rx</span>
+    </div>
+  </div>
+  <div class="row">
+    <div class="span8">
+      <form class="form-inline">
+        <div class="page-header">
+          <h1 id="console">Tiny JavaScript Console</h1>
+          <p>Never used JavaScript before? It's fun. Check out the <a href="http://josscrowcroft.github.com/javascript-sandbox-console/" target="_blank">js sandbox console</a> or (even better) your browser's development console.</p>
+          <input class="input-large" id="console-textarea" type="text" placeholder="Type any JavaScript code here" />
+          <button class="btn btn-primary" id="console-submit">Run</button>
+          <span class="help-inline" id="console-return"></span>
+        </div>
+      </form>
+    </div>
+  </div>
+  <hr />
+  <footer>
+    <p class="alert alert-info"><i class="icon-shopping-cart"></i>
+    no free robots here, if you need a Arduino or a RC car,
+    <a href="http://www.amazon.com/" target="_blank">go shopping</a>
+    or take a free ride while you can.</p>
+    <a href="#" class="close" data-dismiss="alert">&times;</a>
+    <code>
+      <i class="icon-road"></i>
+      git clone git@github.com:henvic/rcarweb.git
+    </code>
+  </footer>
+</div>

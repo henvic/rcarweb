@@ -34,7 +34,7 @@ npm test
 * [duino](https://github.com/ecto/duino)
 * [RailwayJS](http://railwayjs.com/)
 * [express](http://expressjs.com/)
-* [jade](http://jade-lang.com/)
+* [ejs](https://github.com/visionmedia/ejs)
 * [socket.io](http://socket.io/)
 * [less-middleware](https://github.com/emberfeather/less.js-middleware)
 
