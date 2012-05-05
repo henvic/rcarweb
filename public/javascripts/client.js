@@ -5,6 +5,17 @@
         var socket = io.connect(''),
             metaArduino = io.connect('/meta/arduino');
 
+        $("a[href*=#]").click(function (e) {
+            var href = $(this).attr('href');
+            var timeout = 400;
+
+            e.preventDefault();
+            $('html,body').animate({scrollTop:$(this.hash).offset().top}, timeout);
+            setTimeout(function () {
+                window.location.hash = href;
+            }, timeout);
+        });
+
         $('#console-submit').click(function (e) {
             var consoleTextarea = $('#console-textarea');
             var consoleReturn = $('#console-return');
