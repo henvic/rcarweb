@@ -26,7 +26,7 @@
   "main": "server.js",
   "scripts": {
     "install": "bin/install",
-    "test": "grunt test; recess public/stylesheets/*.less"
+    "test": "grunt"
   },
   "dependencies": {
     "express": "2.5.9",
@@ -36,7 +36,8 @@
     "ejs-ext": "*",
     "duino": ">= 0.0.6",
     "socket.io": ">= 0.9.6",
-    "less-middleware": "*"
+    "less-middleware": "*",
+    "grunt-recess" : "*"
   },
   "devDependencies": {
     "qunit": "*",

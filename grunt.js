@@ -15,6 +15,11 @@ module.exports = function(grunt) {
       files: '<config:lint.files>',
       tasks: 'default'
     },
+    recess: {
+      dist: {
+        src: ['public/stylesheets/*.less']
+      }
+    },
     jshint: {
       options: {
         curly: true,
@@ -38,6 +43,8 @@ module.exports = function(grunt) {
   });
 
   // Default task.
-  grunt.registerTask('default', 'lint test');
+  grunt.registerTask('default', 'lint test recess');
+
+  grunt.loadNpmTasks('grunt-recess');
 
 };
