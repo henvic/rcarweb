@@ -61,14 +61,15 @@
   </div>
   <div class="row">
     <div class="span8">
-      <section id="console">
+      <section id="morse">
         <form class="form-inline">
           <div class="page-header">
-           <h1>Tiny JavaScript Console</h1>
-           <p>Never used JavaScript before? It's fun. Check out the <a href="http://josscrowcroft.github.com/javascript-sandbox-console/" target="_blank">js sandbox console</a> or (even better) your browser's development console.</p>
-            <input class="input-large" id="console-textarea" type="text" placeholder="Type any JavaScript code here" />
-            <button class="btn btn-primary" id="console-submit">Run</button>
-            <span class="help-inline" id="console-return"></span>
+           <h1>Morse code</h1>
+           <p>Messages are encoded with regard to the <a href="http://www.itu.int/rec/R-REC-M.1677-1-200910-I/">International Morse Code</a>. The signal is sent to the 13-pin digital output by default (your Arduino board almost certainly has a LED hooked in this pin). Characters not available for translation will be silently ignored.<br />
+           Learn more about <a href="http://en.wikipedia.org/wiki/Morse_code">morse code</a>.</p>
+            <input class="input-large" id="morse-textarea" type="text" placeholder="Type any text message here" maxlength="100" />
+            <button class="btn btn-primary" id="morse-submit">Run</button>
+            <span class="help-inline false-pre" id="morse-return"></span>
           </div>
         </form>
       </section>
