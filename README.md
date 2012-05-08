@@ -53,15 +53,9 @@ node server
 ## Contributing (push, open bugs, etc)
 Feel free to push code to this repository. Anything you want, go to the [issue tracker](https://github.com/henvic/rcarweb/issues/).
 
-In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [grunt](https://github.com/cowboy/grunt) and [recess](https://github.com/twitter/recess).
+In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. [Grunt](https://github.com/cowboy/grunt) can help you with that.
 
-To run recess you will need to use:
-
-```
-recess public/stylesheets/*.less
-```
-
-Grunt has a great watch option which watches for file changes, use it with:
+It has a great watch option which watches for file changes, use it with:
 
 ```
 grunt watch
