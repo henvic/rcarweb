@@ -12,7 +12,7 @@ module.exports = function(grunt) {
       files: ['grunt.js', 'app/**/*.js', 'config/**/*.js', 'db/**/*.js', 'public/javascripts/**/*.js', 'routes/**/*.js', 'test/**/*.js']
     },
     watch: {
-      files: ['<config:lint.files>', 'public/stylesheets/*.less'],
+      files: ['<config:lint.files>', '<config:recess.dist.src>'],
       tasks: 'default'
     },
     recess: {
