@@ -9,7 +9,7 @@ module.exports = function(grunt) {
       files: ['test/**/*.js']
     },
     lint: {
-      files: ['grunt.js', 'app/**/*.js', 'config/**/*.js', 'db/**/*.js', 'public/javascripts/**/*.js', 'routes/**/*.js', 'test/**/*.js']
+      files: ['arduino.js', 'grunt.js', 'app/**/*.js', 'config/**/*.js', 'db/**/*.js', 'public/javascripts/**/*.js', 'routes/**/*.js', 'test/**/*.js']
     },
     watch: {
       files: ['<config:lint.files>', '<config:recess.dist.src>'],
