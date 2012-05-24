@@ -14,9 +14,10 @@ var config = require('../../config/settings');
 //set Arduino metainfo channel
 io.of('/meta/arduino').on('connection', function (socket) {
     socket.on('message', function (msg) {
-        if (msg === 'blink led') {
-            console.log('blink LED');
-            console.log(board);
+        var data = JSON.parse(msg);
+
+        if (data.route === "/led/blink") {
+            console.log('Blink LED');
             board.digitalWrite(config.ledPin, board.HIGH);
             setTimeout(function () {
                 board.digitalWrite(config.ledPin, board.LOW);

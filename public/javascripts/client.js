@@ -24,6 +24,7 @@
             e.preventDefault();
 
             morseReturn.html('<i class="icon-arrow-right"></i> ' + morse.encode(message, true));
+            var data = {"route":"/led/morse", "message":[message]};
         });
 
         $('[data-spy="scroll"]').each(function () {
