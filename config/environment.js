@@ -52,6 +52,8 @@ io.set('authorization', function (data, accept) {
         return accept(null, true);
     });
 }).sockets.on('connection', function (socket) {
+    require('../app/sockets/control');
+
     var sess = socket.handshake.session;
     socket.log.info(
         'a socket with sessionID',
