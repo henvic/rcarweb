@@ -13,6 +13,8 @@ A simple RC car which its remote control connected to a Arduino which will send 
 ## Install
 [node.js](http://nodejs.org/) is the platform. If you don't have, install it first.
 
+Then you need to upload the [duino's C code](https://github.com/ecto/duino/blob/master/src/du.ino) to your board.
+
 After, on your CLI (command-line interface) clone the project:
 
 ```
