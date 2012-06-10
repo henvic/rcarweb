@@ -24,7 +24,7 @@
             e.preventDefault();
 
             morseReturn.html('<i class="icon-arrow-right"></i> ' + morse.encode(message, true));
-            var data = {"route":"/led/morse", "message":[message]};
+            metaArduino.emit("/led/morse", {"message":[message]});
         });
 
         $('[data-spy="scroll"]').each(function () {
@@ -48,7 +48,7 @@
         $('#pin13-debug-btn').popover();
 
         $('#pin13-debug-btn').click(function () {
-            metaArduino.send('blink led');
+            metaArduino.emit("/led/blink", {});
             console.log('debug button clicked');
         });
 
