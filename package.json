@@ -37,7 +37,8 @@
     "duino": ">= 0.0.6",
     "socket.io": ">= 0.9.6",
     "less-middleware": "*",
-    "grunt-recess" : "*"
+    "grunt-recess" : "*",
+    "memory-cache" : ">= 0.0.2"
   },
   "devDependencies": {
     "qunit": "*",
