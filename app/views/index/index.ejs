@@ -1,3 +1,18 @@
+<% if (arduinoStatus != 'ready' && arduinoStatus != 'connected') { %>
+<div class="modal fade hide" id="arduinoNotFoundModal">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal">×</button>
+    <h3>Arduino not found</h3>
+  </div>
+  <div class="modal-body">
+    <p>You must wire your Arduino to your computer <em>before</em> starting up the server for this web app to be able to control your board. If you have it connected to your computer, restart the web server.<br /><br />
+    You will need to upload <a href="https://github.com/ecto/duino/blob/master/src/du.ino" title="duino's code to upload to Arduino">this code</a> to your Arduino before you run the server.</p>
+  </div>
+  <div class="modal-footer">
+    <a href="#" class="btn btn-info" data-dismiss="modal">Dismiss</a>
+  </div>
+</div>
+<% } %>
 <div class="container">
   <div class="row">
     <div class="span12">
