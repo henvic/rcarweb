@@ -5,7 +5,7 @@
         var socket = io.connect(''),
             metaArduino = io.connect('/meta/arduino');
 
-        $("a[href*=#]").click(function (e) {
+        $('a[href*=#]').click(function (e) {
             var href = $(this).attr('href');
             var timeout = 400;
 
@@ -31,7 +31,7 @@
             var $spy = $(this).scrollspy('refresh');
         });
 
-        $("#rc-btn-cam").toggle(
+        $('#rc-btn-cam').toggle(
             function () {
                 var btn = $(this);
                 btn.html("<i class=\"icon-facetime-video icon-white\"></i> turn off the cam");
@@ -52,7 +52,7 @@
             console.log('debug button clicked');
         });
 
-        $("#rc-btn-park").click(function () {
+        $('#rc-btn-park').click(function () {
             var progress = $('#progress');
             progress.addClass('active');
             setTimeout(function () {
