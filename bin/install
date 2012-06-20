@@ -20,6 +20,10 @@ install() {
   curl -O http://code.jquery.com/jquery-1.7.2.min.js &&
   echo "jQuery successfully installed"
 
+  curl -o jquery-miniColors.v1.0.5.zip -O https://nodeload.github.com/claviska/jquery-miniColors/zipball/v1.0.5 &&
+  unzip jquery-miniColors.v1.0.5.zip && rm jquery-miniColors.v1.0.5.zip && mv claviska-jquery-miniColors-9dc9162 jquery-miniColors
+  echo "jQuery miniColors successfully installed"
+
   echo "Don't install anything directly here. It will be erased with any npm install. Use bin/install for the job instead." >> IMPORTANT.md
 
   cd ../..
