@@ -18,6 +18,11 @@
 
         $('#morse-submit').click(function (e) {
             var morseTextarea = $('#morse-textarea');
+        var arduinoNotFoundModal = $('#arduinoNotFoundModal');
+        if (arduinoNotFoundModal.length > 0) {
+            arduinoNotFoundModal.modal();
+        }
+
         /** begin of RGB LED */
         var rgbLedClosure = (function () {
             var rgb2hex = function(red, green, blue) {
