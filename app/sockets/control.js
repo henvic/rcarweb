@@ -1,5 +1,7 @@
 "use strict";
 
+var cache = require('memory-cache');
+
 var environment = require('../../config/environment');
 
 var io = environment.io;
