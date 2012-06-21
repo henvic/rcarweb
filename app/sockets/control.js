@@ -111,7 +111,6 @@ io.of('/meta/arduino').on('connection', function (socket) {
                 return false;
             }
 
-            socket.emit('transmission', 'rx');
             var morseMessage = morse.encode(message);
 
             var wait = 0;
