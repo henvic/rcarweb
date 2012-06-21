@@ -185,6 +185,20 @@
                     );
             }
         });
+
+        var rxIndicator = $('#rx-indicator');
+        var txIndicator = $('#tx-indicator');
+        metaArduino.on('transmission', function (msg) {
+            if (msg === 'rx') {
+                rxIndicator.css('opacity', 1).fadeTo('fast', 0.5);
+            } else if (msg === 'tx') {
+                txIndicator.css('opacity', 1).fadeTo('fast', 0.5);
+            } else {
+                console.log('Can\'t notify.');
+            }
+            console.log(msg);
+        });
+
         socket.on('disconnect', function () {
             console.log('Socket.IO: disconnected');
             var status = $('#websocket-connection-status');
