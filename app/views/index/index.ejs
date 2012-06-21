@@ -96,6 +96,11 @@
         <div class="page-header">
           <h1>Square Wave</h1>
           <p><a title="Arduino - PWM" href="http://arduino.cc/en/Tutorial/PWM">Pulse Width Modulation</a>, or PWM,  is a technique for getting analog results with digital means. Digital control is used to create a square wave, a signal switched between on and off. We will use it here to control the speed of a small motor and to control the pulse of light of a RGB LED.</p>
+          <form class="form-inline">
+          <h2>Speed control</h2>
+          <input type="range" name="squarewave" id="speed-control" min="0" max="255" step="1" value="0" />
+          <output for="squarewave" id="speed-control-gauge">0</output>
+          </form>
           <form class="form-horizontal">
             <h2>RGB LED</h2>
             <div class="control-group">

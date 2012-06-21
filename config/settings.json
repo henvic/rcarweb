@@ -1,6 +1,7 @@
 {
     "port": "3000",
     "ledPin": "13",
+    "motorPin": "10",
     "redPin": "3",
     "greenPin": "6",
     "bluePin": "5"

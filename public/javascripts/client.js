@@ -75,6 +75,31 @@
         } ());
         /** end of RGB LED */
 
+        /** begin of speed control **/
+        var speedControlClosure = (function () {
+            var speedControl = $('#speed-control');
+            var speedControlGauge = $('#speed-control-gauge');
+            var avoidEmit = false;
+
+            speedControl.bind('change keyup mouseup', function (e) {
+                if (avoidEmit) {
+                    avoidEmit = false;
+                    console.log('emit avoided');
+                   return false;
+                }
+                speedControlGauge.text(this.value);
+                metaArduino.emit('/speed-control', this.value);
+            });
+
+            metaArduino.on('/speed-control', function (speed) {
+                console.log('new cruise speed: ' + speed);
+                avoidEmit = true;
+                speedControl.val(speed);
+                speedControlGauge.text(speed);
+            });
+        } ());
+        /** end of speed control **/
+
             var morseReturn = $('#morse-return');
             var message = morseTextarea.val();
 

@@ -61,6 +61,32 @@ function writeMorseMessage(message, socket) {
 
 //set Arduino metainfo channel
 io.of('/meta/arduino').on('connection', function (socket) {
+    /** begin of speed control **/
+    var speedControlClosure = (function () {
+        if (cache.get('speed') === null) {
+            cache.put('speed', 0);
+            board.analogWrite(config.motorPin, cache.get('speed'));
+            console.log('setting speed to ' + cache.get('speed'));
+        }
+        socket.emit('/speed-control', cache.get('speed'));
+        socket.on('/speed-control', function (unfilteredSpeed) {
+            var speed = parseInt (unfilteredSpeed, 10);
+            var minSpeed = 0;
+            var maxSpeed = 255;
+
+            if (speed >= minSpeed && speed <= maxSpeed) {
+                socket.broadcast.emit('/speed-control', speed);
+                cache.put('speed', speed);
+                board.analogWrite(config.motorPin, speed);
+            } else {
+                console.log('Not broadcasting speed in unallowed range (min: ' +
+                    minSpeed + ', max: ' + maxSpeed +'): ' + speed);
+                socket.emit('/speed-control', cache.get('speed'));
+            }
+        });
+    } ());
+    /** end of speed control **/
+
     /** begin of rgb led **/
     var rgbLedClosure = (function () {
         if (cache.get('rgb-led') === null) {
