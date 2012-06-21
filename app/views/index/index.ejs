@@ -90,6 +90,51 @@
       </section>
     </div>
   </div>
+  <div class="row">
+    <div class="span8">
+      <section id="squarewave">
+        <div class="page-header">
+          <h1>Square Wave</h1>
+          <p><a title="Arduino - PWM" href="http://arduino.cc/en/Tutorial/PWM">Pulse Width Modulation</a>, or PWM,  is a technique for getting analog results with digital means. Digital control is used to create a square wave, a signal switched between on and off. We will use it here to control the speed of a small motor and to control the pulse of light of a RGB LED.</p>
+          <form class="form-horizontal">
+            <h2>RGB LED</h2>
+            <div class="control-group">
+              <label class="control-label" for="rgb-led-r">Red (digital pin <%= config.redPin %>)</label>
+              <div class="controls">
+                <div class="input-prepend">
+                  <input class="span1" type="number" id="rgb-led-r" name="rgb-led-r" autocomplete="off" min="0" max="255" value="0" />
+                </div>
+              </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label" for="rgb-led-g">Green (digital pin <%= config.greenPin %>)</label>
+              <div class="controls">
+                <div class="input-prepend">
+                  <input class="span1" type="number" id="rgb-led-g" name="rgb-led-g" autocomplete="off" min="0" max="255" value="0" />
+                </div>
+              </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label" for="rgb-led-b">Blue (digital pin <%= config.bluePin %>)</label>
+              <div class="controls">
+                <div class="input-prepend">
+                  <input class="span1" type="number" id="rgb-led-b" name="rgb-led-b" autocomplete="off" min="0" max="255" value="0" />
+                </div>
+              </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label" for="rgb-led">Hex color code</label>
+              <div class="controls">
+                <div class="input-prepend">
+                  <input class="span1" type="text" id="rgb-led" name="rgb-led" autocomplete="off" maxlength="7" value="#000000" />
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </section>
+    </div>
+  </div>
   <footer>
     <p class="alert alert-info"><i class="icon-shopping-cart"></i>
     no free robots here, if you need a Arduino or a RC car,

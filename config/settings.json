@@ -1,5 +1,8 @@
 {
     "port": "3000",
-    "ledPin": "13"
+    "ledPin": "13",
+    "redPin": "3",
+    "greenPin": "6",
+    "bluePin": "5"
 }
 

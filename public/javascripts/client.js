@@ -18,6 +18,63 @@
 
         $('#morse-submit').click(function (e) {
             var morseTextarea = $('#morse-textarea');
+        /** begin of RGB LED */
+        var rgbLedClosure = (function () {
+            var rgb2hex = function(red, green, blue) {
+                var hex = [
+                    parseInt(red, 10).toString(16).toUpperCase(),
+                    parseInt(green, 10).toString(16).toUpperCase(),
+                    parseInt(blue, 10).toString(16).toUpperCase()
+                ];
+
+                $.each(hex, function(nr, val) {
+                    if (val.length === 1) {
+                        hex[nr] = '0' + val;
+                    }
+                });
+                return '#' + hex.join('');
+            };
+
+            var redLed = $('#rgb-led-r');
+            var greenLed = $('#rgb-led-g');
+            var blueLed = $('#rgb-led-b');
+            var rgbLed = $('#rgb-led');
+            var avoidEmit = false;
+
+            rgbLed.miniColors({
+                letterCase: 'uppercase',
+                change: function(hex, rgb) {
+                    redLed.val(rgb.r);
+                    greenLed.val(rgb.g);
+                    blueLed.val(rgb.b);
+                    if (avoidEmit) {
+                        avoidEmit = false;
+                        console.log('emit avoided');
+                        return false;
+                    }
+                    metaArduino.emit('/rgb-led', {
+                        red: rgb.r,
+                        green: rgb.g,
+                        blue: rgb.b
+                    });
+                }
+            });
+
+            $('#rgb-led-r,#rgb-led-g,#rgb-led-b').bind('change keyup mouseup', function (e) {
+                var red = redLed.val();
+                var green = greenLed.val();
+                var blue = blueLed.val();
+                rgbLed.miniColors('value', '#' + rgb2hex(red, green, blue));
+            });
+
+            metaArduino.on('/rgb-led', function (rgb) {
+                console.log('new colors: red=' + rgb.red + ', blue=' + rgb.blue + ', green=' + rgb.green);
+                avoidEmit = true;
+                rgbLed.miniColors('value', '#' + rgb2hex(rgb.red, rgb.green, rgb.blue));
+            });
+        } ());
+        /** end of RGB LED */
+
             var morseReturn = $('#morse-return');
             var message = morseTextarea.val();
 

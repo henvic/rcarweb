@@ -61,6 +61,45 @@ function writeMorseMessage(message, socket) {
 
 //set Arduino metainfo channel
 io.of('/meta/arduino').on('connection', function (socket) {
+    /** begin of rgb led **/
+    var rgbLedClosure = (function () {
+        if (cache.get('rgb-led') === null) {
+            cache.put('rgb-led', {red: 0, green: 0, blue: 0});
+            board.analogWrite(config.redPin, 0);
+            board.analogWrite(config.greenPin, 0);
+            board.analogWrite(config.bluePin, 0);
+            console.log('setting RGB LED output to zero');
+        }
+        socket.emit('/rgb-led', cache.get('rgb-led'));
+        socket.on('/rgb-led', function (rgb) {
+            var min = 0;
+            var max = 255;
+            var red = parseInt (rgb.red, 10);
+            var green = parseInt (rgb.green, 10);
+            var blue = parseInt (rgb.blue, 10);
+            var color = {
+                red: red,
+                green: green,
+                blue: blue
+            };
+            console.log(color);
+            if (red >= min && red <= max &&
+                green >= min && green <= max &&
+                blue >= min && blue <= max
+                ) {
+                socket.broadcast.emit('/rgb-led', color);
+                cache.put('rgb-led', color);
+                board.analogWrite(config.redPin, red);
+                board.analogWrite(config.greenPin, green);
+                board.analogWrite(config.bluePin, blue);
+            } else {
+                console.log('Not broadcasting color in unallowed range (min: ' +
+                    min + ', max: ' + max +'): ');
+                socket.emit('/rgb-led', cache.get('rgb-led'));
+            }
+        });
+    } ());
+    /** end of rgb led **/
     socket.on('/led/blink', function (msg) {
         writeMorseMessage('sos', socket);
     });
