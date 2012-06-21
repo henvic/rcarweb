@@ -16,8 +16,6 @@
             }, timeout);
         });
 
-        $('#morse-submit').click(function (e) {
-            var morseTextarea = $('#morse-textarea');
         var arduinoNotFoundModal = $('#arduinoNotFoundModal');
         if (arduinoNotFoundModal.length > 0) {
             arduinoNotFoundModal.modal();
@@ -105,14 +103,38 @@
         } ());
         /** end of speed control **/
 
+        /** begin of morse **/
+        var morseClosure = (function () {
+            var morseSubmit = $('#morse-submit');
             var morseReturn = $('#morse-return');
-            var message = morseTextarea.val();
 
-            e.preventDefault();
+            metaArduino.on('/led/morse/status', function (status) {
+                if (status.error) {
+                    morseReturn.html('<i class="icon-info-sign"></i> <em>error:</em> message to long');
+                }
+                morseSubmit.attr('disabled', 'disabled');
+                if (! status.self) {
+                    morseReturn.text(status.echo).prepend('<i class="icon-exclamation-sign"></i> <em>wait, message is underway:</em> ');
+                    console.log(status.echo);
+                }
+                setTimeout(function () {
+                    morseSubmit.removeAttr('disabled');
+                    morseReturn.text('');
+                }, parseInt(status.wait, 10));
+            });
 
-            morseReturn.html('<i class="icon-arrow-right"></i> ' + morse.encode(message, true));
-            metaArduino.emit("/led/morse", {"message":[message]});
-        });
+            morseSubmit.click(function (e) {
+                var morseTextarea = $('#morse-textarea');
+                var morseReturn = $('#morse-return');
+                var message = morseTextarea.val();
+
+                e.preventDefault();
+
+                morseReturn.html('<i class="icon-arrow-right"></i> ' + morse.encode(message, true));
+                metaArduino.emit('/led/morse', {'message':[message]});
+            });
+        } ());
+        /** end of morse **/
 
         $('[data-spy="scroll"]').each(function () {
             var $spy = $(this).scrollspy('refresh');

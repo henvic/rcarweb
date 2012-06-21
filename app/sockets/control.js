@@ -13,52 +13,6 @@ var arduinoStatus = arduino.arduinoStatus;
 
 var config = require('../../config/settings');
 
-var morse = require('../../public/javascripts/morse');
-
-function ledUpDown(interval) {
-    board.digitalWrite(config.ledPin, board.HIGH);
-    setTimeout(function () {
-        board.digitalWrite(config.ledPin, board.LOW);
-    }, interval);
-}
-
-function delayedLedUpDown(interval, wait) {
-    board.digitalWrite(config.ledPin, board.LOW);
-    setTimeout(function () {
-        ledUpDown(interval);
-    }, wait);
-}
-
-function writeMorseMessage(message, socket) {
-    var morseMessage = morse.encode(message);
-
-    var wait = 0;
-    for (var i = 0; i < morseMessage.length; i++) {
-        var charDelay = 0;
-        var getChar = morseMessage.charAt(i);
-
-        if (getChar === '.') {
-            charDelay = 100;
-        } else if (getChar === '-') {
-            charDelay = 300;
-        }
-
-        if (charDelay > 0) {
-            delayedLedUpDown(charDelay, wait);
-
-            wait = wait + charDelay;
-        }
-
-        if (getChar === ' ') {
-            wait = wait + 700;
-        } else {
-            wait = wait + 300;
-        }
-    }
-
-    console.log('Message: ' + message + ' and morse code: ' + morseMessage);
-}
-
 //set Arduino metainfo channel
 io.of('/meta/arduino').on('connection', function (socket) {
     /** begin of speed control **/
@@ -126,10 +80,79 @@ io.of('/meta/arduino').on('connection', function (socket) {
         });
     } ());
     /** end of rgb led **/
-    socket.on('/led/blink', function (msg) {
-        writeMorseMessage('sos', socket);
-    });
-    socket.on('/led/morse', function (msg) {
-        writeMorseMessage(String(msg.message), socket);
-    });
+
+    /** begin of morse **/
+    var morseClosure = (function () {
+        var morse = require('../../public/javascripts/morse');
+
+        var avoidMorseMessage = false;
+
+        var ledUpDown = function (interval) {
+            board.digitalWrite(config.ledPin, board.HIGH);
+            setTimeout(function () {
+                board.digitalWrite(config.ledPin, board.LOW);
+            }, interval);
+        };
+
+        var delayedLedUpDown = function (interval, wait) {
+            board.digitalWrite(config.ledPin, board.LOW);
+            setTimeout(function () {
+                ledUpDown(interval);
+            }, wait);
+        };
+
+        var writeMorseMessage = function (message, socket) {
+            var maxLength = 30;
+            if (avoidMorseMessage) {
+                return false;
+            }
+            if (message.length > 30) {
+                socket.emit('/led/morse/status', {error: 'tooLong'});
+                return false;
+            }
+
+            socket.emit('transmission', 'rx');
+            var morseMessage = morse.encode(message);
+
+            var wait = 0;
+            for (var i = 0; i < morseMessage.length; i++) {
+                var charDelay = 0;
+                var getChar = morseMessage.charAt(i);
+
+                if (getChar === '.') {
+                    charDelay = 100;
+                } else if (getChar === '-') {
+                    charDelay = 300;
+                }
+
+                if (charDelay > 0) {
+                    delayedLedUpDown(charDelay, wait);
+
+                    wait = wait + charDelay;
+                }
+
+                if (getChar === ' ') {
+                    wait = wait + 700;
+                } else {
+                    wait = wait + 300;
+                }
+            }
+
+            socket.broadcast.emit('/led/morse/status', {wait: wait + 1000, self: false, echo: message});
+            socket.emit('/led/morse/status', {wait: wait + 820, self: true, echo: message});
+            avoidMorseMessage = true;
+            setTimeout(function () {
+                avoidMorseMessage = false;
+            }, wait, 10);
+
+            console.log('Message: ' + message + ' and morse code: ' + morseMessage);
+        };
+        socket.on('/led/blink', function (msg) {
+            writeMorseMessage('sos', socket);
+        });
+        socket.on('/led/morse', function (msg) {
+            writeMorseMessage(String(msg.message), socket);
+        });
+    } ());
+    /** end of morse **/
 });
