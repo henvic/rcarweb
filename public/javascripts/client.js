@@ -202,7 +202,26 @@
         socket.on('disconnect', function () {
             console.log('Socket.IO: disconnected');
             var status = $('#websocket-connection-status');
+            var socketNotFoundModal = $('#socketNotFoundModal');
+            if (socketNotFoundModal.length > 0) {
+                socketNotFoundModal.modal({keyboard: false});
+            }
+
             status.removeClass('icon-ok-sign').addClass('icon-remove-sign');
+        });
+
+        socket.on('connect_failed', function () {
+            var socketNotFoundModal = $('#socketNotFoundModal');
+            if (socketNotFoundModal.length > 0) {
+                socketNotFoundModal.modal({keyboard: false});
+            }
+        });
+
+        socket.on('reconnect', function () {
+            var socketNotFoundModal = $('#socketNotFoundModal');
+            if (socketNotFoundModal.length > 0) {
+                socketNotFoundModal.modal('hide');
+            }
         });
     });
 }(window.jQuery));
