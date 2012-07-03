@@ -2,8 +2,8 @@
 
 var duino = require('duino');
 
-var arduinoStatus = 'unavailable',
-    board = new duino.Board({debug: true});
+var arduinoStatus = 'unavailable';
+var board = new duino.Board({debug: false});
 
 board.on('error', function (error) {
     console.error(error);
