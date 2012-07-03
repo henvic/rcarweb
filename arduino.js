@@ -24,5 +24,6 @@ board.on('connected', function () {
 });
 
 exports.board = board;
+exports.duino = duino;
 console.log("board is now available");
 exports.arduinoStatus = arduinoStatus;
