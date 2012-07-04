@@ -80,7 +80,7 @@
 
         /** begin of potentiometer gauge experiment **/
         var potentiometerGaugeClosure = (function () {
-            var potentiometerGauge = $('#potentiometer-gaguge');
+            var potentiometerGauge = $('#potentiometer-gauge');
 
             metaArduino.on('/potentiometer-gauge', function (value) {
                 console.log('new potentiometer value: ' + value);
