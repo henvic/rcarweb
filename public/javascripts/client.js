@@ -78,6 +78,17 @@
         } ());
         /** end of RGB LED */
 
+        /** begin of potentiometer gauge experiment **/
+        var potentiometerGaugeClosure = (function () {
+            var potentiometerGauge = $('#potentiometer-gaguge');
+
+            metaArduino.on('/potentiometer-gauge', function (value) {
+                console.log('new potentiometer value: ' + value);
+                potentiometerGauge.val(value);
+            });
+        } ());
+        /** end of potentiometer gauge experiment **/
+
         /** begin of speed control **/
         var speedControlClosure = (function () {
             var speedControl = $('#speed-control');

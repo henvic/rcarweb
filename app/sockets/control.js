@@ -9,12 +9,45 @@ var io = environment.io;
 var arduino = require('../../arduino');
 
 var board = arduino.board;
+
+var duino = arduino.duino;
+
 var arduinoStatus = arduino.arduinoStatus;
 
 var config = require('../../config/settings');
 
 //set Arduino metainfo channel
 io.of('/meta/arduino').on('connection', function (socket) {
+    /** begin of potentiometer gauge experiment **/
+    var potentiometerGaugeClosure = (function () {
+        var started = false;
+
+        var read = function () {
+            var sensor = new duino.Sensor({
+                board: board,
+                pin: config.potentiometerPin
+            });
+
+            sensor.on('read', function(err, value) {
+                value = parseInt(value, 10);
+                var cachedValue = cache.get('potentiometer-gauge');
+
+                if (cachedValue === null || cachedValue !== value) {
+                    cache.put('potentiometer-gauge', value);
+                    socket.in('').emit('/potentiometer-gauge', cache.get('potentiometer-gauge'));
+                    console.log( 'potentiometer-gauge reader: ' + value );
+                }
+            });
+        };
+
+        if (! started) {
+            console.log('starting the potentiometer gauge');
+            read();
+            started = true;
+        }
+    } ());
+    /** end of potentiometer gauge experiment **/
+    
     /** begin of speed control **/
     var speedControlClosure = (function () {
         if (cache.get('speed') === null) {

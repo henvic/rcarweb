@@ -105,6 +105,29 @@
   </div>
   <div class="row">
     <div class="span8">
+      <section id="analog">
+        <form class="form-horizontal">
+          <div class="page-header">
+           <h1>Analog input</h1>
+           <p>You can use the analog input pins to read analog data from sensors like: potentiometer, photoresistor, thermometers, etc. The values read are between 0&nbsp;–&nbsp;1023.</p>
+           <h2>Try a potentiometer</h2>
+           <div class="control-group">
+              <label class="control-label" for="potentiometer-gauge">Value (analog pin <%= config.potentiometerPin %>)</label>
+              <div class="controls">
+                <div class="input-prepend">
+                  <input class="input-mini" name="potentiometer-gauge" id="potentiometer-gauge" type="number" placeholder="undefined" readonly disabled />
+                </div>
+              </div>
+            </div>
+            <a href="/sketches/potentiometer.fzz" title="Potentiometer sketch"><img src="/sketches/potentiometer-bb.png" alt="Potentiometer Breadboard" /></a>
+            <p>One of the things you can do is use it to dim a LED, a buzz or something like that: for that you'd want to map the 0&nbsp;–&nbsp;1023 read value interval to 0&nbsp;–&nbsp;255 for using the PWM output.</p>
+          </div>
+        </form>
+      </section>
+    </div>
+  </div>
+  <div class="row">
+    <div class="span8">
       <section id="squarewave">
         <div class="page-header">
           <h1>Square Wave</h1>

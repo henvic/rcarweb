@@ -4,6 +4,7 @@
     "motorPin": "10",
     "redPin": "3",
     "greenPin": "6",
-    "bluePin": "5"
+    "bluePin": "5",
+    "potentiometerPin": "A0"
 }
 
