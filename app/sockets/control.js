@@ -34,7 +34,8 @@ io.of('/meta/arduino').on('connection', function (socket) {
 
                 if (cachedValue === null || cachedValue !== value) {
                     cache.put('potentiometer-gauge', value);
-                    socket.in('').emit('/potentiometer-gauge', cache.get('potentiometer-gauge'));
+                    socket.broadcast.emit('/potentiometer-gauge', cache.get('potentiometer-gauge'));
+                    socket.emit('/potentiometer-gauge', cache.get('potentiometer-gauge'));
                     console.log( 'potentiometer-gauge reader: ' + value );
                 }
             });
