@@ -7,5 +7,5 @@
 var app = require('../app');
 
 exports.index = function (req, res) {
-    res.render('index', { title: 'rcarweb', arduinoStatus: app.arduinoStatus });
+    res.render('index', { title: 'rcarweb' });
 };
