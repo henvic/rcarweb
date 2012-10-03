@@ -3,6 +3,13 @@
 @videoWidthLarge: 640px;
 @videoHeightLarge: 480px;
 
+.rounded(@radius: 2px) {
+  -webkit-border-radius: @radius;
+  -moz-border-radius: @radius;
+  border-radius: @radius;
+  -moz-background-clip: padding; -webkit-background-clip: padding-box; background-clip: padding-box; 
+}
+
 .false-pre {
     word-break: break-all;
     word-wrap: break-word;
