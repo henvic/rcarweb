@@ -122,13 +122,19 @@ io.of('/meta/arduino').on('connection', function (socket) {
         var avoidMorseMessage = false;
 
         var ledUpDown = function (interval) {
+            socket.emit('/led/morse/feedback', true);
+            socket.broadcast.emit('/led/morse/feedback', true);
             board.digitalWrite(config.ledPin, board.HIGH);
             setTimeout(function () {
+                socket.emit('/led/morse/feedback', false);
+                socket.broadcast.emit('/led/morse/feedback', false);
                 board.digitalWrite(config.ledPin, board.LOW);
             }, interval);
         };
 
         var delayedLedUpDown = function (interval, wait) {
+            socket.emit('/led/morse/feedback', false);
+            socket.broadcast.emit('/led/morse/feedback', false);
             board.digitalWrite(config.ledPin, board.LOW);
             setTimeout(function () {
                 ledUpDown(interval);

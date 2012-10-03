@@ -144,6 +144,16 @@
                 morseReturn.html('<i class="icon-arrow-right"></i> ' + morse.encode(message, true));
                 metaArduino.emit('/led/morse', {'message':[message]});
             });
+
+            var morseLedFeedback = $('#morse-led-feedback');
+
+            metaArduino.on('/led/morse/feedback', function (up) {
+                if (up) {
+                    morseLedFeedback.addClass("icon-white");
+                } else {
+                    morseLedFeedback.removeClass("icon-white");
+                }
+            });
         } ());
         /** end of morse **/
 
